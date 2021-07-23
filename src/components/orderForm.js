@@ -23,32 +23,10 @@ export default function Form(props) {
     return (
         
         <form className='form container' id='pizza-form' onSubmit={onSubmit}>
-            <h2>Add a User</h2>
+            <h2>Order Your Pie Below</h2>
+            
             <div>
-                <label>Special Requests&nbsp;
-                    <input
-                        value={values.username}
-                        onChange={onChange}
-                        name='username'
-                        type='text'
-                        id='special-text'
-                    />
-                    {errors.username}
-                </label>
-            </div>
-            <div>
-                <label>Password&nbsp;
-                    <input
-                        value={values.password}
-                        onChange={onChange}
-                        name='password'
-                        type='password'
-                    />
-                    {errors.password}
-                </label>
-            </div>
-            <div>
-                <label>Name&nbsp;
+                <label>What's Your Name?&nbsp;
                     <input
                         value={values.name}
                         onChange={onChange}
@@ -56,74 +34,80 @@ export default function Form(props) {
                         type='text'
                         id='name-input'
                     />
-                    {errors.name}
+                    <div>
+                        {errors.name}
+                    </div>
                 </label>
             </div>
             <div>
-                <label>Email Address&nbsp;
-                    <input
-                        value={values.email}
-                        onChange={onChange}
-                        name='email'
-                        type='email'
-                    />
-                    {errors.email}
-                </label>
-            </div>
-            <div>
-                <label>Birthday&nbsp;
-                    <input
-                        value={values.birthday}
-                        onChange={onChange}
-                        name='birthday'
-                        type='date'
-                    />
-                    {errors.birthday}
-                </label>
-            </div>
-            <div>
-                <label>Pizza Size&nbsp;
+                <label>How Big You Want Your D'oh Pie?&nbsp;
                     <select
-                        value={values.userRole}
+                        value={values.size}
                         onChange={onChange}
-                        name='userRole'
+                        name='size'
                         id='size-dropdown'
                     >
-                        <option value=''>- Select an Option -</option>
-                        <option value='warlock'>Warlock</option>
-                        <option value='paladin'>Paladin</option>
-                        <option value='ranger'>Ranger</option>
-                        <option value='bard'>Bard</option>
-                        <option value='wizard'>Wizard</option>
+                        <option value=''>- Select an Size -</option>
+                        <option value='small'>Small - 12inch (Personal)</option>
+                        <option value='medium'>Medium - 16inch (For 2-3)</option>
+                        <option value='large'>Large - 20inch (For 3-4)</option>
+                        <option value='extraLarge'>Extra Large - 24inch (Mmmmmm.... Pizza)</option>
                     </select>
-                    {errors.userRole}
+                    {errors.size}
                 </label>
             </div>
-            <div>
-                <label>Profile Picture&nbsp;
-                    <input
-                        value={values.profilePic}
-                        onChange={onChange}
-                        name='profilePic'
-                        type='file'
-                    />
-                    {errors.profilePic}
-                </label>
-            </div>
-            <br></br>
-            <div>
+            <div className='form-toppings checkboxes'>
+                <h4>What You Want It?</h4>
+                <label>Pepperoni
                 <input
-                    value={values.tos}
-                    onChange={onChange}
-                    name='tos'
                     type='checkbox'
+                    name='pepperoniTopping'
+                    onChange={onChange}
+                    checked={values.pepperoniTopping}
                 />
-                {errors.tos}
-                <label>I Agree to the Terms of Service&nbsp;</label>
+                </label>
+
+                <label>Donuts
+                <input
+                    type='checkbox'
+                    name='donutsTopping'
+                    onChange={onChange}
+                    checked={values.donutsTopping}
+                />
+                </label>
+
+                <label>Veggies (Yuck!)
+                <input
+                    type='checkbox'
+                    name='veggiesTopping'
+                    onChange={onChange}
+                    checked={values.veggiesTopping}
+                />
+                </label>
+                <label>Extra Cheese
+                <input
+                    type='checkbox'
+                    name='extraCheeseTopping'
+                    onChange={onChange}
+                    checked={values.extraCheeseTopping}
+                />
+                </label>
+            </div>
+            <div>
+                <label>You Got Something Else to Say?&nbsp;
+                    <input
+                        value={values.special}
+                        onChange={onChange}
+                        name='special'
+                        type='text'
+                        id='special-text'
+                    />
+                    {errors.special}
+                </label>
             </div>
             <br></br>
             <div>
-                <button disabled={disabled} id='order-button'>Add To Order</button>
+                <button disabled={disabled} id='order-button'>Order Now!</button>
             </div>
             
         </form>

@@ -14,7 +14,7 @@ export default function Home() {
       <img
         className='homerlisapizza-image'
         src='https://i.pinimg.com/originals/e2/8d/90/e28d90f4ac443db6022609cd71c7547a.jpg'
-        alt='Homer and Lisa Simpson sharing a Doh Pie in the Kitchen'
+        alt="Homer and Lisa Simpson sharing a D'oh Pie in the Kitchen"
       />
       <button
         onClick={routeToOrderForm}

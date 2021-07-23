@@ -11,48 +11,36 @@ import OrderForm from './components/orderForm.js'
 // Initial States
 
 const initialFormValues = {
-  // Text Inputs
   name: '',
-  username: '',
-  email: '',
-  // Password Inputs
-  password: '',
-  // Dropdown Inputs
-  userRole: '',
-  // Date Inputs
-  birthday: '',
-  // File Inputs
-  profilePic: '',
-  // Checkbox Inputs
-  tos: '',
+  size: '',
+  pepperoniTopping: false,
+  donutsTopping: false,
+  veggiesTopping: false,
+  extraCheeseTopping: false,
+  special: '',
 }
 
 const initialFormErrors = {
   name: '',
-  username: '',
-  email: '',
-  password: '',
-  userRole: '',
-  birthday: '',
-  tos: '',
+  size: '',
 }
 
-const initialUsers = []
+const initialOrders = []
 const initialDisabled = true
 
 function App() {
   // State Declarations
-  const [users, setUsers] = useState(initialUsers)
+  const [orders, setOrders] = useState(initialOrders)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
 
   // Helper Functions
-  const postNewUser = newUser => {
+  const postNewOrder = newUser => {
     axios.post('https://reqres.in/api/orders', newUser)
       .then (res => {
-        setUsers([res.data, ...users])
-        console.log('UPDATE TO GET CORRECT SUCCESS RESPONSE', res)
+        setOrders([res.data, ...orders])
+        console.log('UPDATE TO GET CORRECT SUCCESS RESPONSE', res.data)
       })
       .catch(err => {
         console.log(err)
@@ -79,18 +67,17 @@ function App() {
     })
   }
 
-  const formSubmit = () => {
-    const newUser = {
+  const formSubmitOrder = () => {
+    const newOrder = {
       name: formValues.name.trim(),
-      username: formValues.username.trim(),
-      email: formValues.email.trim(),
-      password: formValues.password.trim(),
-      userRole: formValues.userRole.trim(),
-      birthday: formValues.birthday.trim(),
-      tos: formValues.tos,
-      profilePic: formValues.profilePic.trim(),
+      size: formValues.size.trim(),
+      pepperoniTopping: formValues.pepperoniTopping,
+      donutsTopping: formValues.donutsTopping,
+      veggiesTopping: formValues.veggiesTopping,
+      extraCheeseTopping: formValues.extraCheeseTopping,
+      special: formValues.special.trim(),     
     }
-    postNewUser(newUser)
+    postNewOrder(newOrder)
   }
 
   // Side Effects
@@ -112,7 +99,7 @@ function App() {
           <OrderForm 
             values={formValues}
             change={inputChange}
-            submit={formSubmit}
+            submit={formSubmitOrder}
             disabled={disabled}
             errors={formErrors}
           />
