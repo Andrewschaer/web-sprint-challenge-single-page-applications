@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Route, Link, Switch, Redirect} from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import schema from './validation/formSchema.js'
 import { reach } from 'yup'
 import './index.css';
@@ -40,7 +40,7 @@ function App() {
     axios.post('https://reqres.in/api/orders', newUser)
       .then (res => {
         setOrders([res.data, ...orders])
-        console.log('UPDATE TO GET CORRECT SUCCESS RESPONSE', res.data)
+        console.log('Order Submission Status:', res.status, 'Order Submission Values:', res.data)
       })
       .catch(err => {
         console.log(err)
@@ -107,7 +107,6 @@ function App() {
         <Route path='/'>
           <Home />
         </Route>
-        {/* <Redirect to='/' /> */}
       </Switch>
     </div>
   );

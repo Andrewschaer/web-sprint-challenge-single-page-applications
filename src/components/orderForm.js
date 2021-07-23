@@ -57,7 +57,7 @@ export default function Form(props) {
                 </label>
             </div>
             <div className='form-toppings checkboxes'>
-                <h4>What You Want It?</h4>
+                <h4>What You Want On It?</h4>
                 <label>Pepperoni
                 <input
                     type='checkbox'

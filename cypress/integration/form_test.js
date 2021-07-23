@@ -1,6 +1,6 @@
 // - [X] test that you can add text to the box
 // - [X] test that you can select multiple toppings
-// - [ ] test that you can submit the form
+// - [X] test that you can submit the form
 
 describe('User Onboarding App', () => {
     beforeEach(() => {
